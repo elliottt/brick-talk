@@ -185,7 +185,7 @@ author of *A Song of Ice and Fire* (Game of Thrones)
 
 ~~~
 
-  ui = fill ' ' <=> str "Right-justified"
+  ui = fill ' ' <+> str "Right-justified"
 
 ~~~
 
@@ -215,8 +215,8 @@ author of *A Song of Ice and Fire* (Game of Thrones)
 ~~~
 -------------------------------------------------
 
--> Workflow <-
-==============
+-> Brick Workflow <-
+====================
 
 At a high level:
 
@@ -230,13 +230,17 @@ At a high level:
 
 ~~~
 
-            Await
-  Start --> Event <------ Redraw
-              |              ^
-              |              |
-              v              |
-            Handle ------> Change ------> Quit
-             Event         State
+   Draw       Await          Redraw
+  Initial --> Event <------- State
+   State        |              ^
+                |              |
+                v              |
+              Handle ------> Change
+              Event          State
+                |
+                |
+                v
+               Quit
 
 ~~~
 
@@ -263,3 +267,6 @@ At a high level:
 -------------------------------------------------
 
 -> fin! <-
+
+-> https://github.com/jtdaugherty/brick <-
+-> http://hackage.haskell.org/package/brick <-
