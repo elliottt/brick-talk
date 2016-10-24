@@ -24,29 +24,42 @@ from *The Princess Bride*
 
 -------------------------------------------------
 
--> Writing terminal applications *is* painful! <-
+-> Writing terminal applications _is_ painful! <-
 
 ^
 -> We have to worry about ... <-
 ^
 
-\ \ \ \ \ \ \ \ \ \ \ \ ... *interface layout* and *terminal size*
+\ \ \ \ \ \ \ \ \ \ \ \ ... _interface layout_ and _terminal size_
 ^
-\ \ \ \ \ \ \ \ \ \ \ \ ... how to set *terminal attributes*
+\ \ \ \ \ \ \ \ \ \ \ \ ... how to set _terminal attributes_
 ^
-\ \ \ \ \ \ \ \ \ \ \ \ ... the *terminal's feature set*
+\ \ \ \ \ \ \ \ \ \ \ \ ... the _terminal's feature set_
 
 -------------------------------------------------
 
--> *vty* provides: <-
--> primitives for *drawing*, processing *input events*, <-
--> and managing *terminal capabilities* <-
+-> Options in Haskell <-
+========================
+
+^
+-> vty <-
+---------
+
+- Curses-like library
+- Provides "image" drawing interface
+- Exposes input event interface
+- Uses Terminfo to configure and interact with the terminal
 
 ^
 
--> *brick* provides: <-
--> an *application abstraction*, a *drawing and layout language*, <-
--> a simple *text editor*, and *attribute theme* support <-
+-> brick <-
+-----------
+
+- Builds on _vty_
+- Provides application abstraction
+- Provides a drawing and layout language
+- Includes a simple text editor
+- Provides attribute themes
 
 -------------------------------------------------
 
@@ -65,7 +78,7 @@ from *The Princess Bride*
 ================
 
 ^
--> Express your UI in a *purely-functional, declarative style*: <-
+-> Express your UI in a _purely-functional, declarative style_: <-
 
 ~~~
 
@@ -79,7 +92,7 @@ from *The Princess Bride*
 -> Why brick? <-
 ================
 
--> Use *high-level combinators* to create complex layouts: <-
+-> Use _high-level combinators_ to create complex layouts: <-
 
 ~~~
 
@@ -107,7 +120,7 @@ from *The Princess Bride*
 -> Why brick? <-
 ================
 
--> Use *high-level combinators* to create complex layouts: <-
+-> Use _high-level combinators_ to create complex layouts: <-
 
 ~~~
 
@@ -135,7 +148,7 @@ from *The Princess Bride*
 -> Why brick? <-
 ================
 
--> Use *high-level combinators* to create complex layouts: <-
+-> Use _high-level combinators_ to create complex layouts: <-
 
 ~~~
 
@@ -163,7 +176,7 @@ from *The Princess Bride*
 -> Why brick? <-
 ================
 
--> Use *high-level combinators* to create complex layouts: <-
+-> Use _high-level combinators_ to create complex layouts: <-
 
 ~~~
 
@@ -191,7 +204,7 @@ from *The Princess Bride*
 -> Why brick? <-
 ================
 
--> Avoid dealing with *terminal size math*: <-
+-> Avoid dealing with _terminal size math_: <-
 
 ~~~
 
@@ -210,7 +223,7 @@ from *The Princess Bride*
 -> Why brick? <-
 ================
 
--> Use dynamic *attribute themes*: <-
+-> Use dynamic _attribute themes_: <-
 
 ~~~
 
@@ -231,11 +244,11 @@ from *The Princess Bride*
 At a high level:
 
 ^
-- Provide initial *application state*
+- Provide initial _application state_
 ^
-- Provide *drawing function* to *draw your state*
+- Provide _drawing function_ to _draw your state_
 ^
-- Provide *event handling function* to *transform your state*
+- Provide _event handling function_ to _transform your state_
 ^
 
 ~~~
