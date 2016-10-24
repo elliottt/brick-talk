@@ -10,31 +10,41 @@
 "Life is miserable and full of pain."
 
 George R. R. Martin,
-author of *A Song of Ice and Fire* (Game of Thrones)
-
--------------------------------------------------
-
--> Writing terminal applications can be painful! <-
+author of *A Song of Ice and Fire* (Game of Thrones, etc.)
 
 ^
 
+Buttercup:
+  "You mock my pain."
+Man in Black:
+  "Life is pain, Highness. Anyone who says differently is selling
+   something."
+
+from *The Princess Bride*
+
+-------------------------------------------------
+
+-> Writing terminal applications *is* painful! <-
+
+^
 -> We have to worry about ... <-
 ^
--> ... *interface layout* and *terminal size* <-
+
+\ \ \ \ \ \ \ \ \ \ \ \ ... *interface layout* and *terminal size*
 ^
--> ... how to set *terminal attributes* <-
+\ \ \ \ \ \ \ \ \ \ \ \ ... how to set *terminal attributes*
 ^
--> ... the *terminal's feature set* <-
+\ \ \ \ \ \ \ \ \ \ \ \ ... the *terminal's feature set*
 
 -------------------------------------------------
 
--> *vty* = <-
--> library for *drawing*, processing *input events*, <-
+-> *vty* provides: <-
+-> primitives for *drawing*, processing *input events*, <-
 -> and managing *terminal capabilities* <-
 
 ^
 
--> *brick* = <-
+-> *brick* provides: <-
 -> an *application abstraction*, a *drawing and layout language*, <-
 -> a simple *text editor*, and *attribute theme* support <-
 
@@ -191,7 +201,7 @@ author of *A Song of Ice and Fire* (Game of Thrones)
 
 ~~~
 
-                                          Right-justified
+                                                Right-justified
 
 ~~~
 
