@@ -32,7 +32,7 @@ from *The Princess Bride*
 
 \ \ \ \ \ \ \ \ \ \ \ \ ... _interface layout_ and _terminal size_
 ^
-\ \ \ \ \ \ \ \ \ \ \ \ ... how to set _terminal attributes_
+\ \ \ \ \ \ \ \ \ \ \ \ ... when to set and unset _terminal attributes_
 ^
 \ \ \ \ \ \ \ \ \ \ \ \ ... the _terminal's feature set_
 
