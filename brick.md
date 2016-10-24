@@ -214,10 +214,57 @@ author of *A Song of Ice and Fire* (Game of Thrones)
 ~~~
 -------------------------------------------------
 
--> What about input? <-
-=======================
+-> Workflow <-
+==============
 
-Yup.
+At a high level:
+
+^
+- Provide initial *application state*
+^
+- Provide *drawing function*
+^
+- Provide *event handling function*
+^
+
+~~~
+
+            Await
+  Start --> Event <------ Redraw
+              |              ^
+              |              |
+              v              |
+            Handle ------> Change ------> Quit
+             Event         State
+
+~~~
+
+-------------------------------------------------
+
+-> Complete example: increment/show a counter <-
+================================================
+
+~~~
+
+  drawMyApp :: Int -> Widget n
+  drawMyApp c = str $ "Counter: " <> show c
+
+  handleEvent :: Int -> Event -> EventM n (Next Int)
+  handleEvent c (EvKey (KChar '+') []) = continue $ c + 1  
+  handleEvent c (EvKey (KChar 'q') []) = halt       c
+  handleEvent c _                      = continue   c
+
+  app = App { appDraw         = drawMyApp
+            , appChooseCursor = neverShowCursor
+            , appHandleEvent  = handleEvent
+            , appStartEvent   = return
+            , appAttrMap      = def
+            , appLiftVtyEvent = id
+            }
+
+  main = defaultMain app 0
+
+~~~
 
 -------------------------------------------------
 
