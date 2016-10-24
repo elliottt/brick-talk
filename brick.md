@@ -54,6 +54,7 @@ author of *A Song of Ice and Fire* (Game of Thrones)
 -> Why brick? <-
 ================
 
+^
 -> Express your UI in a *purely-functional, declarative style*: <-
 
 ~~~
@@ -222,9 +223,9 @@ At a high level:
 ^
 - Provide initial *application state*
 ^
-- Provide *drawing function*
+- Provide *drawing function* to *draw your state*
 ^
-- Provide *event handling function*
+- Provide *event handling function* to *transform your state*
 ^
 
 ~~~
