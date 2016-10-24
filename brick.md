@@ -263,7 +263,7 @@ At a high level:
 
   initialState = 0
 
-  drawMyApp c = str $ "Counter: " <> show c
+  drawMyApp c = [str $ "Counter: " <> show c]
 
   handleEvent c (EvKey (KChar '+') []) = continue $ c + 1  
   handleEvent c (EvKey (KChar 'q') []) = halt       c
