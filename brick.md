@@ -241,10 +241,13 @@ At a high level:
 
 -------------------------------------------------
 
--> Complete example: increment/show a counter <-
-================================================
+-> Example: increment/show a counter <-
+=======================================
 
 ~~~
+
+  initialState :: Int
+  initialState = 0
 
   drawMyApp :: Int -> Widget n
   drawMyApp c = str $ "Counter: " <> show c
@@ -253,9 +256,6 @@ At a high level:
   handleEvent c (EvKey (KChar '+') []) = continue $ c + 1  
   handleEvent c (EvKey (KChar 'q') []) = halt       c
   handleEvent c _                      = continue   c
-
-  initialState :: Int
-  initialState = 0
 
 ~~~
 
