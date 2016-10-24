@@ -251,13 +251,10 @@ At a high level:
 
 ~~~
 
-  initialState :: Int
   initialState = 0
 
-  drawMyApp :: Int -> Widget n
   drawMyApp c = str $ "Counter: " <> show c
 
-  handleEvent :: Int -> Event -> EventM n (Next Int)
   handleEvent c (EvKey (KChar '+') []) = continue $ c + 1  
   handleEvent c (EvKey (KChar 'q') []) = halt       c
   handleEvent c _                      = continue   c
