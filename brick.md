@@ -254,15 +254,8 @@ At a high level:
   handleEvent c (EvKey (KChar 'q') []) = halt       c
   handleEvent c _                      = continue   c
 
-  app = App { appDraw         = drawMyApp
-            , appChooseCursor = neverShowCursor
-            , appHandleEvent  = handleEvent
-            , appStartEvent   = return
-            , appAttrMap      = def
-            , appLiftVtyEvent = id
-            }
-
-  main = defaultMain app 0
+  initialState :: Int
+  initialState = 0
 
 ~~~
 
