@@ -2,6 +2,14 @@
 %author: J. Daugherty
 %date: 2016-10-25
 
+
+
+
+
+
+
+
+
 -> Building terminal applications <-
 -> one *brick* at a time <-
 
