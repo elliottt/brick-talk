@@ -6,10 +6,16 @@
 
 
 
--> Painless Console Programming <-
--> with *brick* <-
+-> Painless Console Programming with <-
 
-
+                 ____                       __
+                /\  _`\          __        /\ \
+                \ \ \L\ \  _ __ /\_\    ___\ \ \/'\
+                 \ \  _ <'/\`'__\/\ \  /'___\ \ , <
+                  \ \ \L\ \ \ \/ \ \ \/\ \__/\ \ \\`\
+                   \ \____/\ \_\  \ \_\ \____\\ \_\ \_\
+                    \/___/  \/_/   \/_/\/____/ \/_/\/_/
+    
 
 -> for intermediate Haskell programmers <-
 
