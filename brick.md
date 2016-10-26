@@ -15,8 +15,8 @@
 
 -------------------------------------------------
 
--> Writing terminal applications is painful! <-
-===============================================
+-> Writing console applications sucks! <-
+=========================================
 
 ^
 -> We have to worry about ... <-
@@ -61,7 +61,7 @@
 ================
 
 ^
--> Express your UI in a _purely-functional, declarative style_: <-
+-> Express interfaces in a _purely-functional, declarative style_: <-
 
 ~~~
 
@@ -215,7 +215,7 @@
 -> Why brick? <-
 ================
 
--> Avoid dealing with _brittle terminal size math_: <-
+-> Avoid _brittle terminal size math_: <-
 
 ~~~
 
@@ -264,7 +264,6 @@ At a high level:
 
 ^
 - Provide _event handling function_ to _transform your state_
-^
 
 -------------------------------------------------
 
@@ -273,14 +272,14 @@ At a high level:
 
 ~~~
 
-   Draw           Await                    Handle
-  Initial ------> Event -----------------> Event -----> Quit
-   State            ^                        |
-                    |                        |
-                    |                        |
-                    |                        |
-                    \-- Redraw <-- Change <--/
-                                   State
+   Draw          Await                    Handle
+  Initial ─────> Event ─────────────────> Event ─────> Quit
+   State           ^                      (I/O)
+                   │                        │
+                   │                        │
+                   │                        │
+                   └── Redraw <── Change <──┘
+                                  State
 
 ~~~
 
