@@ -10,8 +10,8 @@
 
 
 
--> Building terminal applications <-
--> one *brick* at a time <-
+-> Painless Console Programming <-
+-> with *brick* <-
 
 -------------------------------------------------
 
@@ -19,37 +19,19 @@
 ===============================================
 
 ^
-"Life is miserable and full of pain."
-
-George R. R. Martin,
-author of *A Song of Ice and Fire* (Game of Thrones, etc.)
-
-^
-
-Buttercup:
-  "You mock my pain."
-Man in Black:
-  "Life is pain, Highness. Anyone who says differently is selling
-   something."
-
-from *The Princess Bride*
-
--------------------------------------------------
-
 -> We have to worry about ... <-
-================================
 ^
 
-\ \ \ \ \ \ \ \ \ \ \ \ ... _interface layout_ and _terminal size_
+\ \ \ \ \ \ \ \ \ \ \ \ ... _interface layout_ and _terminal resizes_
 ^
-\ \ \ \ \ \ \ \ \ \ \ \ ... when to set and unset _terminal attributes_
+\ \ \ \ \ \ \ \ \ \ \ \ ... _terminal attributes_
 ^
-\ \ \ \ \ \ \ \ \ \ \ \ ... the _terminal's feature set_
+\ \ \ \ \ \ \ \ \ \ \ \ ... _terminal feature set_
 
 -------------------------------------------------
 
--> Options in Haskell <-
-========================
+-> Haskell to the rescue! <-
+============================
 
 ^
 -> vty <-
@@ -224,7 +206,7 @@ from *The Princess Bride*
 
 ~~~
 
-                                                Right-justified
+                                             Right-justified  
 
 ~~~
 
@@ -233,7 +215,7 @@ from *The Princess Bride*
 -> Why brick? <-
 ================
 
--> Use dynamic _attribute themes_: <-
+-> Use _attribute themes_: <-
 
 ~~~
 
@@ -286,7 +268,7 @@ At a high level:
 
   initialState = 0
 
-  drawMyApp c = [str $ "Counter: " <> show c]
+  drawMyApp c = [center $ str $ "Counter: " <> show c]
 
   handleEvent c (EvKey (KChar '+') []) = continue $ c + 1  
   handleEvent c (EvKey (KChar 'q') []) = halt       c
