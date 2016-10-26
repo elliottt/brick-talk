@@ -6,12 +6,12 @@
 
 
 
-
-
-
-
 -> Painless Console Programming <-
 -> with *brick* <-
+
+
+
+-> for intermediate Haskell programmers <-
 
 -------------------------------------------------
 
