@@ -22,11 +22,13 @@
 -> We have to worry about ... <-
 ^
 
-\ \ \ \ \ \ \ \ \ \ \ \ ... _interface layout_ and _terminal resizes_
+\ \ \ \ \ \ \ \ \ \ ... _interface layout_ and _terminal resizes_
 ^
-\ \ \ \ \ \ \ \ \ \ \ \ ... _terminal attributes_
+
+\ \ \ \ \ \ \ \ \ \ ... _terminal attributes_
 ^
-\ \ \ \ \ \ \ \ \ \ \ \ ... _terminal feature set_
+
+\ \ \ \ \ \ \ \ \ \ ... _terminal feature set_
 
 -------------------------------------------------
 
@@ -39,8 +41,8 @@
 
 - Curses-like library
 - Provides "image" drawing interface
-- Exposes input event interface
-- Uses Terminfo to configure and interact with the terminal
+- Input event interface
+- Supports Terminfo
 
 ^
 
@@ -52,17 +54,6 @@
 - Provides a drawing and layout language
 - Includes a simple text editor
 - Provides attribute themes
-
--------------------------------------------------
-
--> A simple program <-
-======================
-
-~~~~
-
-  main = simpleMain $ str "Hello, world!"  
-
-~~~~
 
 -------------------------------------------------
 
@@ -89,6 +80,34 @@
 ~~~
 
 
+               
+  ui = vBox [ hCenter $ str "Up above"
+            , hBorder
+            , str "Down below (long line)"
+            ]
+
+~~~
+
+~~~
+
+                          
+          Up above        
+   ────────────────────── 
+   Down below (long line) 
+                          
+
+~~~
+
+-------------------------------------------------
+
+-> Why brick? <-
+================
+
+-> Use _high-level combinators_ to create complex layouts: <-
+
+~~~
+
+
   ui = border $
        vBox [ hCenter $ str "Up above"
             , hBorder
@@ -99,11 +118,11 @@
 
 ~~~
 
- ┌──────────────────────┐
- │       Up above       │
- │──────────────────────│
- │Down below (long line)│
- └──────────────────────┘
+  ┌──────────────────────┐
+  │       Up above       │
+  │──────────────────────│
+  │Down below (long line)│
+  └──────────────────────┘
 
 ~~~
 
@@ -127,11 +146,11 @@
 
 ~~~
 
- +----------------------+
- |       Up above       |
- |----------------------|
- |Down below (long line)|
- +----------------------+
+  +----------------------+
+  |       Up above       |
+  |----------------------|
+  |Down below (long line)|
+  +----------------------+
 
 ~~~
 
@@ -155,11 +174,11 @@
 
 ~~~
 
- ╭──────────────────────╮
- │       Up above       │
- │──────────────────────│
- │Down below (long line)│
- ╰──────────────────────╯
+  ╭──────────────────────╮
+  │       Up above       │
+  │──────────────────────│
+  │Down below (long line)│
+  ╰──────────────────────╯
 
 ~~~
 
@@ -183,11 +202,11 @@
 
 ~~~
 
- ╭────────Border!───────╮
- │       Up above       │
- │──────────────────────│
- │Down below (long line)│
- ╰──────────────────────╯
+  ╭────────Border!───────╮
+  │       Up above       │
+  │──────────────────────│
+  │Down below (long line)│
+  ╰──────────────────────╯
 
 ~~~
 
@@ -196,17 +215,19 @@
 -> Why brick? <-
 ================
 
--> Avoid dealing with _terminal size math_: <-
+-> Avoid dealing with _brittle terminal size math_: <-
 
 ~~~
 
-  ui = fill ' ' <+> str "Right-justified"
+  ui = (fill ' ' <+> str "Right-justified") <=>
+       (hCenter $ str "Centered")
 
 ~~~
 
 ~~~
 
                                              Right-justified  
+                         Centered
 
 ~~~
 
@@ -220,11 +241,11 @@
 ~~~
 
   ui = withDefAttr "someAttr" $
-       str "Right-justified"
+       str "White on a blue background"
 
   applicationTheme :: AttrMap
-  applicationTheme = attrMap defAttr
-    [ ("someAttr", white `on` blue)
+  applicationTheme = attrMap (bg blue)
+    [ ("someAttr", fg white)
     ]
 
 ~~~
@@ -237,25 +258,29 @@ At a high level:
 
 ^
 - Provide initial _application state_
+
 ^
 - Provide _drawing function_ to _draw your state_
+
 ^
 - Provide _event handling function_ to _transform your state_
 ^
 
+-------------------------------------------------
+
+-> Brick Workflow <-
+====================
+
 ~~~
 
-   Draw       Await          Redraw
-  Initial --> Event <------- State
-   State        |              ^
-                |              |
-                v              |
-              Handle ------> Change
-              Event          State
-                |
-                |
-                v
-               Quit
+   Draw           Await                    Handle
+  Initial ------> Event -----------------> Event -----> Quit
+   State            ^                        |
+                    |                        |
+                    |                        |
+                    |                        |
+                    \-- Redraw <-- Change <--/
+                                   State
 
 ~~~
 
@@ -280,5 +305,13 @@ At a high level:
 
 -> fin! <-
 
+-> *Code, demos, documentation* <-
 -> https://github.com/jtdaugherty/brick <-
+
+-> *Releases* <-
 -> http://hackage.haskell.org/package/brick <-
+
+-> *Contact* <-
+-> cygnus@foobox.com <-
+
+-> Thanks! <-
