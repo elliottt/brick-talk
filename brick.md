@@ -18,7 +18,7 @@
 
 
 
--> Programming terminals is hard! <-
+-> Writing console programs is hard! <-
 
 
 ^
@@ -31,6 +31,11 @@
   ui = str "Some text"
 
 ~~~
+
+
+
+
+
 
 ~~~
 
@@ -46,6 +51,11 @@
 
 ~~~
 
+
+
+
+
+
 ~~~
 
                            Some text
@@ -60,6 +70,10 @@
        <=> hBorder
 
 ~~~
+
+
+
+
 
 ~~~
 
@@ -79,6 +93,8 @@
        <=> (str "Some more text")
 
 ~~~
+
+
 
 ~~~
 
@@ -100,6 +116,7 @@
        <=> (str "Some more text")
 
 ~~~
+
 
 ~~~
 
