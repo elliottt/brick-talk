@@ -15,6 +15,10 @@
 
 -------------------------------------------------
 
+-> Writing terminal applications is painful! <-
+===============================================
+
+^
 "Life is miserable and full of pain."
 
 George R. R. Martin,
@@ -32,10 +36,8 @@ from *The Princess Bride*
 
 -------------------------------------------------
 
--> Writing terminal applications _is_ painful! <-
-
-^
 -> We have to worry about ... <-
+================================
 ^
 
 \ \ \ \ \ \ \ \ \ \ \ \ ... _interface layout_ and _terminal size_

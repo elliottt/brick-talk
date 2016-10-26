@@ -1,0 +1,28 @@
+TODO
+
+- Need elevator pitch / message I want to deliver, why I want audience
+to see the talk and what I want them to get out of it
+
+"X is hard/fun/easy/cool"
+"How to do X by using technique Y"
+e.g. "Anyone can become a good speaker by learning these ten steps"
+then drive the content writing from this statement
+
+Tell a story
+- throw out everything you have, organize into coherent story
+- use some story types to help:
+  catalog (list of details)
+  end to end (start to finish ("Ansible in 30 minutes", beginner to
+    advanced, simple to complex, linear organization)
+  quest (problem, then solution and how you got there, post-mortem)
+  enlightenment (journel from ignorance to knowledge, used to do X,
+    learned Y, now do Z)
+  show and tell (start with a bang, demo of complex or difficult, then
+    examine and explain how it worked)
+  theme and variations (show different alternatives for doing something)
+
+Story types for my talk:
+  - show and tell
+  - quest?
+
+- bonus material section (more detail etc.) if no questions or more time
