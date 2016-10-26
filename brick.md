@@ -187,9 +187,9 @@
 
 ~~~
 
-   Draw          Await                    Handle
-  Initial ─────> Event ─────────────────> Event ─────> Quit
-   State           ^                      (I/O)
+   Draw          Await                    Handle       Quit w/  
+  Initial ─────> Event ─────────────────> Event ─────> Final
+   State           ^                      (I/O)        State
                    │                        │
                    │                        │
                    │                        │
