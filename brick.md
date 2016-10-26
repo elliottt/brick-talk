@@ -15,255 +15,145 @@
 
 -------------------------------------------------
 
--> Writing console applications sucks! <-
-=========================================
+
+
+
+-> Programming terminals is hard! <-
+
 
 ^
--> We have to worry about ... <-
-^
-
-\ \ \ \ \ \ \ \ \ \ ... _interface layout_ and _terminal resizes_
-^
-
-\ \ \ \ \ \ \ \ \ \ ... _terminal attributes_
-^
-
-\ \ \ \ \ \ \ \ \ \ ... _terminal feature set_
+-> High-level abstraction is needed. <-
 
 -------------------------------------------------
-
--> Haskell to the rescue! <-
-============================
-
-^
--> vty <-
----------
-
-- Curses-like library
-- Provides "image" drawing interface
-- Input event interface
-- Supports Terminfo
-
-^
-
--> brick <-
------------
-
-- Builds on _vty_
-- Provides application abstraction
-- Provides a drawing and layout language
-- Includes a simple text editor
-- Provides attribute themes
-
--------------------------------------------------
-
--> Why brick? <-
-================
-
-^
--> Express interfaces in a _purely-functional, declarative style_: <-
 
 ~~~
 
-  ui = withAttr "header" $
-       str "This is the header"
+  ui = str "Some text"
+
+~~~
+
+~~~
+
+  Some text
 
 ~~~
 
 -------------------------------------------------
 
--> Why brick? <-
-================
-
--> Use _high-level combinators_ to create complex layouts: <-
-
 ~~~
 
-
-               
-  ui = vBox [ hCenter $ str "Up above"
-            , hBorder
-            , str "Down below (long line)"
-            ]
+  ui = hCenter $ str "Some text"
 
 ~~~
 
 ~~~
 
-                          
-          Up above        
-   ────────────────────── 
+                           Some text
+
+~~~
+
+-------------------------------------------------
+
+~~~
+
+  ui = (hCenter $ str "Some text")
+       <=> hBorder
+
+~~~
+
+~~~
+
+
+                           Some text
+   ──────────────────────────────────────────────────────
+
+
+~~~
+
+-------------------------------------------------
+
+~~~
+
+  ui = (hCenter $ str "Some text")
+       <=> hBorder
+       <=> (str "Some more text")
+
+~~~
+
+~~~
+
+
+                           Some text
+   ──────────────────────────────────────────────────────
    Down below (long line) 
-                          
+
 
 ~~~
 
 -------------------------------------------------
 
--> Why brick? <-
-================
-
--> Use _high-level combinators_ to create complex layouts: <-
-
 ~~~
-
 
   ui = border $
-       vBox [ hCenter $ str "Up above"
-            , hBorder
-            , str "Down below (long line)"
-            ]
+       (hCenter $ str "Some text")
+       <=> hBorder
+       <=> (str "Some more text")
 
 ~~~
 
 ~~~
 
-  ┌──────────────────────┐
-  │       Up above       │
-  │──────────────────────│
-  │Down below (long line)│
-  └──────────────────────┘
+  ┌───────────────────────────────────────────────────────┐
+  │                        Some text                      │
+  │───────────────────────────────────────────────────────│
+  │Down below (long line)                                 │
+  └───────────────────────────────────────────────────────┘
 
 ~~~
 
 -------------------------------------------------
-
--> Why brick? <-
-================
-
--> Use _high-level combinators_ to create complex layouts: <-
 
 ~~~
 
   ui = withBorderStyle ascii $
        border $
-       vBox [ hCenter $ str "Up above"
-            , hBorder
-            , str "Down below (long line)"
-            ]
+       (hCenter $ str "Some text")
+       <=> hBorder
+       <=> (str "Some more text")
 
 ~~~
 
 ~~~
 
-  +----------------------+
-  |       Up above       |
-  |----------------------|
-  |Down below (long line)|
-  +----------------------+
+  +-------------------------------------------------------+
+  |                        Some text                      |
+  |-------------------------------------------------------|
+  |Down below (long line)                                 |
+  +-------------------------------------------------------+
 
 ~~~
 
 -------------------------------------------------
-
--> Why brick? <-
-================
-
--> Use _high-level combinators_ to create complex layouts: <-
 
 ~~~
 
   ui = withBorderStyle unicodeRounded $
        border $
-       vBox [ hCenter $ str "Up above"
-            , hBorder
-            , str "Down below (long line)"
-            ]
+       (hCenter $ str "Some text")
+       <=> hBorder
+       <=> (str "Some more text")
 
 ~~~
 
 ~~~
 
-  ╭──────────────────────╮
-  │       Up above       │
-  │──────────────────────│
-  │Down below (long line)│
-  ╰──────────────────────╯
+  ╭───────────────────────────────────────────────────────╮  
+  │                        Some text                      │
+  │───────────────────────────────────────────────────────│
+  │Down below (long line)                                 │
+  ╰───────────────────────────────────────────────────────╯
 
 ~~~
-
--------------------------------------------------
-
--> Why brick? <-
-================
-
--> Use _high-level combinators_ to create complex layouts: <-
-
-~~~
-
-  ui = withBorderStyle unicodeRounded $
-       borderWithLabel (str "Border!") $
-       vBox [ hCenter $ str "Up above"
-            , hBorder
-            , str "Down below (long line)"
-            ]
-
-~~~
-
-~~~
-
-  ╭────────Border!───────╮
-  │       Up above       │
-  │──────────────────────│
-  │Down below (long line)│
-  ╰──────────────────────╯
-
-~~~
-
--------------------------------------------------
-
--> Why brick? <-
-================
-
--> Avoid _brittle terminal size math_: <-
-
-~~~
-
-  ui = (fill ' ' <+> str "Right-justified") <=>
-       (hCenter $ str "Centered")
-
-~~~
-
-~~~
-
-                                             Right-justified  
-                         Centered
-
-~~~
-
--------------------------------------------------
-
--> Why brick? <-
-================
-
--> Use _attribute themes_: <-
-
-~~~
-
-  ui = withDefAttr "someAttr" $
-       str "White on a blue background"
-
-  applicationTheme :: AttrMap
-  applicationTheme = attrMap (bg blue)
-    [ ("someAttr", fg white)
-    ]
-
-~~~
--------------------------------------------------
-
--> Brick Workflow <-
-====================
-
-At a high level:
-
-^
-- Provide initial _application state_
-
-^
-- Provide _drawing function_ to _draw your state_
-
-^
-- Provide _event handling function_ to _transform your state_
 
 -------------------------------------------------
 
